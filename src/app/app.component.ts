@@ -21,24 +21,24 @@ export class AppComponent implements OnInit {
   ngOnInit(): void{
     this.faceSnaps = [
           this.mySnap = new FaceSnap(
-      "My First FaceSnap",
-      "This is my first FaceSnap description",
+      "Mon premier FaceSnap",
+      "Voici ma première description de FaceSnap",
       'https://shorturl.at/9gxqU',
       new Date(),
       15
     ),
 
     this.myOtherSnap = new FaceSnap(
-      "My Other FaceSnap",
-      "This is my other FaceSnap description",
+      "Mon autre FaceSnap",
+      "Voici mon autre description de FaceSnap",
       'https://shorturl.at/kIUGC',
       new Date(),
       28
     ),
 
     this.myLastSnap = new FaceSnap(
-      "My Last FaceSnap",
-      "This is my last FaceSnap description",
+      "Mon dernier FaceSnap",
+      "Voici ma dernière description de FaceSnap",
       'https://shorturl.at/0yXBP',
       new Date(),
       144
