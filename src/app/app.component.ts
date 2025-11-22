@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { RouterOutlet } from '@angular/router';
 
@@ -7,13 +7,15 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [
     HeaderComponent,
-    RouterOutlet
+    RouterOutlet,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent{
+export class AppComponent implements OnInit {
 
-  
+  ngOnInit() {
+
+  }
+
 }
-
