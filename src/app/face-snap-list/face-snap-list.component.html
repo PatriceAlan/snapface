@@ -1,3 +1,6 @@
+<!-- @for (faceSnap of faceSnaps$ | async; track faceSnap.title) {
+    <app-face-snap [faceSnap]="faceSnap" />
+} -->
 @for (faceSnap of faceSnaps; track faceSnap.title) {
     <app-face-snap [faceSnap]="faceSnap" />
 }

@@ -3,6 +3,8 @@ header {
   background-color: #EEE;
   margin-bottom: 20px;
   padding: 10px;
+  position: relative;
+  z-index: 10;
 }
 a {
   margin: 0 10px;
@@ -16,4 +18,24 @@ a {
 .active {
   color: #666;
   text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  transition: 
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    background-color 0.2s ease;
+}
+
+button:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: lightgray 4px 4px 10px;
+    background-color: #f7f7f7;
+}
+
+button:active {
+    transform: translate(1px, 1px);
+    box-shadow: lightgray 1px 1px 5px;
+    background-color: #eaeaea;
 }
