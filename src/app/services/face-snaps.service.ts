@@ -17,17 +17,13 @@ export class FaceSnapService {
         return this.http.get<FaceSnap[]>('http://localhost:3000/facesnaps');
     }
 
-    getFaceSnapById(faceSnapId: number): FaceSnap {
-        const foundFaceSnap = this.faceSnaps.find(faceSnap => faceSnap.id === faceSnapId);
-        if (!foundFaceSnap){
-            throw new Error('FaceSnap not found!');
-        }
-        return foundFaceSnap;
+    getFaceSnapById(faceSnapId: number): Observable<FaceSnap> {
+        return this.http.get<FaceSnap>(`http://localhost:3000/facesnaps/${faceSnapId}`)
     }
 
     snapFaceSnapById(faceSnapId: number, snaptype: SnapType): void {
-        const faceSnap = this.getFaceSnapById(faceSnapId);
-        faceSnap.snap(snaptype);
+        // const faceSnap = this.getFaceSnapById(faceSnapId);
+        // faceSnap.snap(snaptype);
     }
 
     addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }): void{
