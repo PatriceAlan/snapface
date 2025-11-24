@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { FaceSnap } from "../models/face-snap";
 import { SnapType } from "../models/snap-type.type";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { map, Observable, switchMap } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -21,9 +21,17 @@ export class FaceSnapService {
         return this.http.get<FaceSnap>(`http://localhost:3000/facesnaps/${faceSnapId}`)
     }
 
-    snapFaceSnapById(faceSnapId: number, snaptype: SnapType): void {
-        // const faceSnap = this.getFaceSnapById(faceSnapId);
-        // faceSnap.snap(snaptype);
+    snapFaceSnapById(faceSnapId: number, snaptype: SnapType): Observable<FaceSnap> {
+        return this.getFaceSnapById(faceSnapId).pipe(
+            map(faceSnap => ({
+                ...faceSnap,
+                snaps: faceSnap.snaps + (snaptype === 'snap' ? 1 : -1)
+            })),
+            switchMap(updatedFaceSnap => this.http.put<FaceSnap>(
+                `http://localhost:3000/facesnaps/${faceSnapId}`,
+                updatedFaceSnap)
+            )
+        );
     }
 
     addFaceSnap(formValue: { title: string, description: string, imageUrl: string, location?: string }): void{
